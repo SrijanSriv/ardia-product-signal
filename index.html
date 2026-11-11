@@ -26,6 +26,7 @@ h3{font-size:1rem;margin:1em 0 .3em}
 .howto{background:var(--soft);border-radius:8px;padding:8px 14px;margin:12px 0}
 .howto ul{margin:.3em 0;padding-left:1.2em}
 .findings{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:6px 16px;margin:12px 0}
+.findings :is(h3,h4,h5,h6){font-size:1.08rem;line-height:1.35;margin:1.4em 0 .4em;padding-top:1em;border-top:1px solid var(--line)}
 .badge{display:inline-block;padding:1px 8px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid currentColor;white-space:nowrap}
 .b-SHIPPED{color:var(--ok)}.b-IN_PROGRESS{color:var(--info)}.b-PARTIALLY_ADDRESSED{color:var(--warn)}
 .b-UNRESOLVED{color:var(--bad)}.b-STILL_REPORTED_AFTER_FIX{color:var(--bad);background:var(--soft)}.b-UNKNOWN{color:var(--gray)}
@@ -135,7 +136,7 @@ tr.row,.panel h3{scroll-margin-top:120px}
 .sm{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px 10px}
 .sm .cell{border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:var(--bg)}
 .sm .cell b{font-size:.75rem;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sm svg{font:10px system-ui,sans-serif}.sm svg text{fill:var(--muted)}.sm svg text.strong{fill:var(--fg)}
+.sm svg{font:11px system-ui,sans-serif}.sm svg text{fill:var(--muted)}.sm svg text.strong{fill:var(--fg)}
 .tabs button{font:inherit;font-size:.8rem;padding:2px 10px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
 .tabs button:first-child{border-radius:6px 0 0 6px}.tabs button:last-child{border-radius:0 6px 6px 0;border-left:0}
 .tabs button.on{background:var(--soft);font-weight:700}
@@ -166,7 +167,7 @@ table.plain td,table.plain th{font-size:.85rem}
 <div class="muted">Public GitHub activity of <a href="https://github.com/mantrakp04/ardia" target="_blank" rel="noopener">mantrakp04/ardia</a>
  &middot; reports from <b>2026-09-29</b> to <b>2026-11-11</b>
  &middot; data pulled 2026-11-11
- &middot; built 2026-11-11 09:27 UTC</div>
+ &middot; built 2026-11-11 09:34 UTC</div>
 </header>
 
 <nav id="tabnav" aria-label="Report sections">
@@ -1290,8 +1291,8 @@ TABS['contributors'] = function () {
   row('All areas', tot, N, 0, true);
   rows.forEach(([k, v, n], i) => row(short(k), v, n, i + 1));
   document.getElementById('ct-bars').innerHTML = `<div class="lgd">${CATS.map(c => `<span><i style="background:var(${c[2]})"></i>${c[1]}</span>`).join('')}</div><div class="chart">${s}</svg></div><p class="small muted">Share of each area's fixed threads. Area = the thread's most common evidence area. A large "unknown" share means the fix link is a release note or a commit without a resolvable author.</p>`;
-  document.getElementById('ct-top').innerHTML = `<table class="plain"><thead><tr><th>#</th><th>GitHub login</th><th class="num">Fixed threads</th><th class="num">of which their own report</th></tr></thead><tbody>` +
-    CT.top.map((t, i) => `<tr><td>${i + 1}</td><td>${a('https://github.com/' + t.login, t.login)}</td><td class="num">${t.n}</td><td class="num">${t.self}</td></tr>`).join('') + '</tbody></table>';
+  document.getElementById('ct-top').innerHTML = `<div class="tscroll"><table class="plain"><thead><tr><th>#</th><th>GitHub login</th><th class="num">Fixed threads</th><th class="num">of which their own report</th></tr></thead><tbody>` +
+    CT.top.map((t, i) => `<tr><td>${i + 1}</td><td>${a('https://github.com/' + t.login, t.login)}</td><td class="num">${t.n}</td><td class="num">${t.self}</td></tr>`).join('') + '</tbody></table></div>';
 };
 
 // ---------- overview: headline tiles linking to every other tab
